@@ -1,0 +1,1 @@
+var MiaouMiam = angular.module('MiaouMiam', []);

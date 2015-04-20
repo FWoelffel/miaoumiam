@@ -1,12 +1,14 @@
 <!DOCTYPE html>
-<html>
+<html ng-app='MiaouMiam'>
   <head>
-    <title><%= title %></title>
+    <title>MiaouMiam</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <body ng-controller='HomeController'>
+    <h1>MiaouMiam</h1>
+    <button ng-disabled='feeding' ng-click='feed()'>Feed</button>
   <script src='/js/angular.js'></script>
+  <script src='/js/app.js'></script>
+  <script src='/js/controllers/HomeController.js'></script>
   </body>
 </html>

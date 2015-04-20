@@ -1,8 +1,13 @@
 var express = require('express');
 var router = express.Router();
+var MealController = require('../controllers/meal');
 
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+router.get('/feed', function(req, res, next) {
+    MealController.feed()
+        .then(function f(bool) {
+            res.sendStatus(bool ? 200 : 500);
+        });
+
 });
 
 module.exports = router;

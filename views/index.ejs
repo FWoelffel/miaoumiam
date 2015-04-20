@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html ng-app='MiaouMiam'>
-  <head>
+<head>
     <title>MiaouMiam</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-    <link rel='stylesheet' href='/stylesheets/font-awesome.min.css' />
-  </head>
-  <body ng-controller='HomeController'>
-    <h1>MiaouMiam</h1>
-    <button ng-disabled='feeding' ng-click='feed()'>
-        <span ng-show='!feeding'>Feed</span>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/font-awesome.min.css'/>
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'/>
+</head>
+<body ng-controller='HomeController'>
+<div class="container-fluid">
+    <div class="row">
+        <div class="page-header text-center">
+            <h1>MiaouMiam</h1>
+        </div>
+    </div>
+    <div class="row text-center">
+        <button class='btn btn-primary btn-lg' ng-show='!feeding' ng-click='feed()'>Feed</button>
         <span ng-show='feeding'><i class='fa fa-cog fa-spin fa-4x'></i></span>
-    </button>
-  <script src='/js/angular.js'></script>
-  <script src='/js/app.js'></script>
-  <script src='/js/controllers/HomeController.js'></script>
-  </body>
+    </div>
+</div>
+<script src='/js/angular.js'></script>
+<script src='/js/app.js'></script>
+<script src='/js/controllers/HomeController.js'></script>
+</body>
 </html>

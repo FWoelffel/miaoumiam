@@ -20,7 +20,7 @@
             <span ng-show='feeding'><i class='fa fa-cog fa-spin fa-4x'></i></span>
         </div>
         <div class="col-sm-12 col-md-offset-3 col-md-6">
-            <div ng-disabled='feeding' ovts-slider='' model='slider.val' ovts-slider-options='{label: "Quantity", min: 1, max: 20, step: 1}'></div>
+            <div ng-disabled='feeding' ovts-slider='' model='config.quantity' ovts-slider-options='{label: "Quantity", min: 1, max: 20, step: 1}'></div>
         </div>
     </div>
     <hr />
@@ -41,7 +41,7 @@
                     <label class="btn btn-primary" ng-model="date.satursday" btn-checkbox="'S'">S</label>
                     <label class="btn btn-primary" ng-model="date.sunday" btn-checkbox="'S'">S</label>
                 </div>
-                <label class="btn btn-success" ng-click="schedule()">
+                <label class="btn btn-success" ng-click="addSchedule()">
                     <i ng-show='!scheduling' class="fa fa-save"></i>
                     <i ng-show='scheduling' class="fa fa-refresh fa-spin"></i>
                 </label>

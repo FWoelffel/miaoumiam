@@ -42,9 +42,8 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
 
     $scope.schedule = function() {
         $scope.scheduling = true;
-        console.log($scope.date);
-
-        $http.post('/schedule', {date: $scope.date})
+        console.log('Scheduling');
+        $http.post('/config/schedule', {date: $scope.date})
             .then(function onSuccess(response) {
                 if (response.status === 200) {
                     console.log('Scheduled');

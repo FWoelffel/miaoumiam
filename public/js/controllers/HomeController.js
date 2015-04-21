@@ -62,15 +62,9 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
             });
     }
 
-    $scope.updateTime = function() {
-        $scope.date.hours = $scope.time.getHours() + '';
-        $scope.date.minutes = $scope.time.getMinutes() + '';
-        if($scope.date.hours.length === 1) {
-            $scope.date.hours = '0' + $scope.date.hours;
-        }
-        if($scope.date.minutes.length === 1) {
-            $scope.date.minutes = '0' + $scope.date.minutes;
-        }
+    $scope.normalizeTime = function() {
+        $scope.date.hours = ($scope.time.getHours() < 10 ? '0' + $scope.time.getHours() : $scope.time.getHours());
+        $scope.date.minutes = ($scope.time.getMinutes() < 10 ? '0' + $scope.time.getMinutes() : $scope.time.getMinutes());
     }
 
     $scope.addSchedule = function() {
@@ -95,10 +89,10 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
         $scope.savingCfg = false;
 
         // Init default date
-        var d = new Date();
+        $scope.time = new Date();
         $scope.date = {
-            hours: d.getHours(),
-            minutes: d.getMinutes(),
+            hours: ($scope.time.getHours() < 10 ? '0' + $scope.time.getHours() : $scope.time.getHours()),
+            minutes: ($scope.time.getMinutes() < 10 ? '0' + $scope.time.getMinutes() : $scope.time.getMinutes()),
             monday: false,
             tuesday: false,
             wednesday: false,

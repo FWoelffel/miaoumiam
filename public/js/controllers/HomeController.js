@@ -63,8 +63,14 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
     }
 
     $scope.updateTime = function() {
-        $scope.date.hours = $scope.time.getHours();
-        $scope.date.minutes = $scope.time.getMinutes();
+        $scope.date.hours = $scope.time.getHours() + '';
+        $scope.date.minutes = $scope.time.getMinutes() + '';
+        if($scope.date.hours.length === 1) {
+            $scope.date.hours = '0' + $scope.date.hours;
+        }
+        if($scope.date.minutes.length === 1) {
+            $scope.date.minutes = '0' + $scope.date.minutes;
+        }
     }
 
     $scope.addSchedule = function() {

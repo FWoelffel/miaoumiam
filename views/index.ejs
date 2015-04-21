@@ -20,12 +20,12 @@
             <span ng-show='feeding'><i class='fa fa-cog fa-spin fa-4x'></i></span>
         </div>
         <div class="col-sm-12 col-md-offset-3 col-md-6">
-            <div ng-disabled='feeding' ovts-slider='' model='config.quantity' ovts-slider-options='{label: "Quantity", min: 1, max: 20, step: 1}'></div>
+            <div ng-disabled='feeding' ovts-slider='' model='sliderValue' ovts-slider-options='{label: "Quantity", min: 1, max: 20, step: 1}'></div>
         </div>
     </div>
     <hr />
-    <h2>Schedule</h2>
     <div class="row">
+        <h2>Schedule</h2>
         <form>
             <div class="col-sm-12">
                 <div class="datepickerOuter">
@@ -50,25 +50,44 @@
         </form>
     </div>
     <hr />
-    <h2>Scheduled</h2>
-    <div ng-repeat="schedule in config.schedule">
-        <div class="row">
-            <div class="col-sm-12 col-md-offset-3 col-md-6">
-                <span>{{schedule.hours}} : {{schedule.minutes}}</span>
-                <div class="btn-group">
-                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.monday}">M</label>
-                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.tuesday}">T</label>
-                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.wednesday}">W</label>
-                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.thursday}">T</label>
-                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.friday}">F</label>
-                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.satursday}">S</label>
-                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.sunday}">S</label>
-                </div>
-                <label class="btn btn-sm btn-danger" ng-click="removeSchedule($index)">
-                    <i ng-show='!savingCfg' class="fa fa-remove"></i>
-                    <i ng-show='savingCfg' class="fa fa-refresh fa-spin"></i>
-                </label>
-            </div>
+    <div class="row" ng-show="config.scheduled.length">
+        <h2>Scheduled</h2>
+        <div class="col-sm-12 col-md-offset-3 col-md-6">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">Quantity</th>
+                        <th class="text-center">Time</th>
+                        <th class="text-center">Day(s)</th>
+                        <th class="text-center">Action</th>
+                    </tr>
+                </thead>
+                <tr ng-repeat="scheduled in config.scheduled">
+                    <td>
+                        <span>{{scheduled.quantity}}</span>
+                    </td>
+                    <td>
+                        <span>{{scheduled.date.hours}} : {{scheduled.date.minutes}}</span>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <label class="btn btn-sm btn-primary" ng-class="{active: scheduled.date.monday}">M</label>
+                            <label class="btn btn-sm btn-primary" ng-class="{active: scheduled.date.tuesday}">T</label>
+                            <label class="btn btn-sm btn-primary" ng-class="{active: scheduled.date.wednesday}">W</label>
+                            <label class="btn btn-sm btn-primary" ng-class="{active: scheduled.date.thursday}">T</label>
+                            <label class="btn btn-sm btn-primary" ng-class="{active: scheduled.date.friday}">F</label>
+                            <label class="btn btn-sm btn-primary" ng-class="{active: scheduled.date.satursday}">S</label>
+                            <label class="btn btn-sm btn-primary" ng-class="{active: scheduled.date.sunday}">S</label>
+                        </div>
+                    </td>
+                    <td>
+                        <label class="btn btn-sm btn-danger" ng-click="removeSchedule($index)">
+                        <i ng-show='!savingCfg' class="fa fa-remove"></i>
+                        <i ng-show='savingCfg' class="fa fa-refresh fa-spin"></i>
+                        </label>
+                    </td>
+                </tr>
+            </table>
         </div>
     </div>
 </div>

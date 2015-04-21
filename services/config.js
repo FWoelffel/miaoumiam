@@ -3,8 +3,7 @@ var fs = require('fs');
 var config = {
     CONFIG_PATH: '../config.json',
     DEFAULT_CONFIG: {
-        quantity: 10,
-        schedule: []
+        scheduled: []
     },
     read: function(callback) {
         var path = __dirname + '/' + config.CONFIG_PATH;
@@ -14,7 +13,9 @@ var config = {
                     callback(config.DEFAULT_CONFIG);
                 });
             }
-            callback(JSON.parse(fs.readFileSync(path)));
+            else {
+                callback(JSON.parse(fs.readFileSync(path)));
+            }
         });
     },
     write: function(cfg, callback) {

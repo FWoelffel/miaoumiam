@@ -69,13 +69,13 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
 
     $scope.addSchedule = function() {
         var config = angular.copy($scope.config);
-        config.schedule.push(angular.copy($scope.date));
+        config.scheduled.push({quantity: $scope.sliderValue, date: angular.copy($scope.date)});
         $scope.saveCfg(config);
     }
 
     $scope.removeSchedule = function(idx) {
         var config = angular.copy($scope.config);
-        config.schedule.splice(idx, 1);
+        config.scheduled.splice(idx, 1);
         $scope.saveCfg(config);
     }
 
@@ -87,6 +87,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
         $scope.feeding = false;
         $scope.loadingCfg = false;
         $scope.savingCfg = false;
+        $scope.sliderValue = 10;
 
         // Init default date
         $scope.time = new Date();

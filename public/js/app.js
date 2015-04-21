@@ -1,1 +1,1 @@
-var MiaouMiam = angular.module('MiaouMiam', []);
+var MiaouMiam = angular.module('MiaouMiam', ['ovts']);

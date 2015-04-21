@@ -2,11 +2,10 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
 
     $scope.feeding = false;
 
-
     $scope.feed = function() {
         console.log('Feeding in progress');
         $scope.feeding = true;
-        $http.get('/feed')
+        $http.post('/feed', {times: $scope.slider.val})
             .then(function onSuccess(response){
                 if(response.status === 200) {
                     console.log('Feeding terminated');
@@ -19,7 +18,6 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
             .finally(function eitherWay(){
                 $scope.feeding = false;
             });
-        //$http.get('/feed');
     }
 
 });

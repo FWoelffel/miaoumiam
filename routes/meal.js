@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 var MealController = require('../controllers/meal');
 
-router.get('/feed', function(req, res, next) {
-    MealController.feed()
+router.post('/feed', function(req, res, next) {
+    var times = req.body.times;
+    MealController.feed(times)
         .then(function f(bool) {
             res.sendStatus(bool ? 200 : 500);
         });

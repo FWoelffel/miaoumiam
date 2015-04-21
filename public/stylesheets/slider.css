@@ -1,0 +1,50 @@
+.slider-label,
+.slider-value {
+  float: left;
+  text-transform: capitalize;
+  margin: 0;
+  font-size: 16px;
+  font-family: Helvetica;
+}
+
+.slider-value {
+  float: right;
+}
+
+.slider-container {
+  clear: left;
+  height: 20px;
+  margin-right: 20px;
+  position: relative;
+}
+
+.slider-bar,
+.slider-bar-stub,
+.slider-bar-highlight {
+  height: 5px;
+  background: #9DA8B7;
+  margin-top: -2.5px;
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  top: 50%;
+}
+
+.slider-bar-stub {
+  width: 20px;
+  left: 100%;
+}
+
+.slider-bar-highlight {
+  background: #337ab7;
+}
+
+.slider-handle {
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: #3B4A5E;
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+}

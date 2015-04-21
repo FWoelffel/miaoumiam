@@ -8,13 +8,13 @@
     <link rel='stylesheet' href='/stylesheets/slider.css'/>
 </head>
 <body ng-controller='HomeController'>
-<div class="container-fluid">
+<div class="container text-center">
     <div class="row">
-        <div class="page-header text-center">
+        <div class="page-header">
             <h1>MiaouMiam</h1>
         </div>
     </div>
-    <div class="row text-center">
+    <div class="row">
         <div class="col-sm-12">
             <button class='btn btn-primary btn-lg' ng-show='!feeding' ng-click='feed()'>Feed</button>
             <span ng-show='feeding'><i class='fa fa-cog fa-spin fa-4x'></i></span>
@@ -24,8 +24,9 @@
         </div>
     </div>
     <hr />
+    <h2>Schedule</h2>
     <div class="row">
-        <form class="text-center">
+        <form>
             <div class="col-sm-12">
                 <div class="datepickerOuter">
                     <timepicker class="datepickerInner" ng-model='time' ng-change="updateTime()" show-meridian="ismeridian"></timepicker>
@@ -49,8 +50,9 @@
         </form>
     </div>
     <hr />
+    <h2>Scheduled</h2>
     <div ng-repeat="schedule in config.schedule">
-        <div class="row text-center">
+        <div class="row">
             <div class="col-sm-12 col-md-offset-3 col-md-6">
                 <span>{{schedule.hours}} : {{schedule.minutes}}</span>
                 <div class="btn-group">

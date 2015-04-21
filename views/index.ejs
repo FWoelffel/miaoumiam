@@ -42,11 +42,32 @@
                     <label class="btn btn-primary" ng-model="date.sunday" btn-checkbox="'S'">S</label>
                 </div>
                 <label class="btn btn-success" ng-click="addSchedule()">
-                    <i ng-show='!scheduling' class="fa fa-save"></i>
-                    <i ng-show='scheduling' class="fa fa-refresh fa-spin"></i>
+                    <i ng-show='!savingCfg' class="fa fa-save"></i>
+                    <i ng-show='savingCfg' class="fa fa-refresh fa-spin"></i>
                 </label>
             </div>
         </form>
+    </div>
+    <hr />
+    <div ng-repeat="schedule in config.schedule">
+        <div class="row text-center">
+            <div class="col-sm-12 col-md-offset-3 col-md-6">
+                <span>{{schedule.hours}} : {{schedule.minutes}}</span>
+                <div class="btn-group">
+                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.monday}">M</label>
+                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.tuesday}">T</label>
+                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.wednesday}">W</label>
+                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.thursday}">T</label>
+                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.friday}">F</label>
+                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.satursday}">S</label>
+                    <label class="btn btn-sm btn-primary" ng-class="{active: schedule.sunday}">S</label>
+                </div>
+                <label class="btn btn-sm btn-danger" ng-click="removeSchedule($index)">
+                    <i ng-show='!savingCfg' class="fa fa-remove"></i>
+                    <i ng-show='savingCfg' class="fa fa-refresh fa-spin"></i>
+                </label>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -23,12 +23,12 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
             });
     }
 
-    $scope.saveCfg = function() {
+    $scope.saveCfg = function(cfg) {
         $scope.savingCfg = true;
-        $http.post('/config', {config: $scope.config})
+        $http.post('/config', {config: cfg})
             .then(function onSuccess(response) {
                 if(response.status === 200) {
-                    $scope.config = response.data;
+                    $scope.config = cfg;
                 }
                 else {
                     console.log('Error : ' + response.data);
@@ -68,13 +68,15 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
     }
 
     $scope.addSchedule = function() {
-        $scope.config.schedule.push($scope.date);
-        $scope.saveCfg();
+        var config = angular.copy($scope.config);
+        config.schedule.push(angular.copy($scope.date));
+        $scope.saveCfg(config);
     }
 
     $scope.removeSchedule = function(idx) {
-        $scope.config.schedule.splice(idx, 1); // TODO test
-        $scope.saveCfg();
+        var config = angular.copy($scope.config);
+        config.schedule.splice(idx, 1);
+        $scope.saveCfg(config);
     }
 
     /**

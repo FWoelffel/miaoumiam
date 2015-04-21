@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
 router.post('/schedule', function(req, res, next) {
     var date = req.body.date;
     configReader.read(function(config) {
-        config.schedule.push(date);
+        config.scheduled.push(date);
         configReader.write(config, function() {
             res.sendStatus(200);
         })
@@ -27,7 +27,7 @@ router.post('/schedule', function(req, res, next) {
 
 router.get('/schedule', function(req, res, next) {
     configReader.read(function(config) {
-        res.json(config.schedule);
+        res.json(config.scheduled);
     });
 });
 

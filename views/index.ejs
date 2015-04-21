@@ -2,6 +2,7 @@
 <html ng-app='MiaouMiam'>
 <head>
     <title>MiaouMiam</title>
+    <link rel='stylesheet' href='/stylesheets/style.css'/>
     <link rel='stylesheet' href='/stylesheets/font-awesome.min.css'/>
     <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'/>
     <link rel='stylesheet' href='/stylesheets/slider.css'/>
@@ -22,10 +23,38 @@
             <div ng-disabled='feeding' ovts-slider='' model='slider.val' ovts-slider-options='{label: "Quantity", min: 1, max: 20, step: 1}'></div>
         </div>
     </div>
+    <hr />
+    <div class="row">
+        <form class="text-center">
+            <div class="col-sm-12">
+                <div class="datepickerOuter">
+                    <timepicker class="datepickerInner" ng-model='time' ng-change="updateTime()" show-meridian="ismeridian"></timepicker>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="btn-group">
+                    <label class="btn btn-primary" ng-model="date.monday" btn-checkbox="'M'">M</label>
+                    <label class="btn btn-primary" ng-model="date.tuesday" btn-checkbox="'T'">T</label>
+                    <label class="btn btn-primary" ng-model="date.wednesday" btn-checkbox="'W'">W</label>
+                    <label class="btn btn-primary" ng-model="date.thursday" btn-checkbox="'T'">T</label>
+                    <label class="btn btn-primary" ng-model="date.friday" btn-checkbox="'F'">F</label>
+                    <label class="btn btn-primary" ng-model="date.satursday" btn-checkbox="'S'">S</label>
+                    <label class="btn btn-primary" ng-model="date.sunday" btn-checkbox="'S'">S</label>
+                </div>
+                <label class="btn btn-success" ng-click="schedule()">
+                    <i ng-show='!scheduling' class="fa fa-save"></i>
+                    <i ng-show='scheduling' class="fa fa-refresh fa-spin"></i>
+                </label>
+            </div>
+        </form>
+    </div>
 </div>
+
 <script src='/js/angular.js'></script>
+<script src='/js/angularui.min.js'></script>
 <script src='/js/slider.js'></script>
 <script src='/js/app.js'></script>
 <script src='/js/controllers/HomeController.js'></script>
+
 </body>
 </html>

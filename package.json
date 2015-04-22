@@ -16,6 +16,7 @@
     "morgan": "~1.5.1",
     "pi-blaster.js": "0.0.2",
     "serve-favicon": "~2.2.0",
-    "q": "^1.2.0"
+    "q": "^1.2.0",
+    "node-schedule": "^0.2.6"
   }
 }

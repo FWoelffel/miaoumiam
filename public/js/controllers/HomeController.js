@@ -9,26 +9,26 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
         $http.get('/config')
             .then(function onSuccess(response) {
                 if(response && response.status === 200) {
-                    $scope.config = response.data;
+                        $scope.config = response.data;
                 }
                 else {
                     toaster.pop({
                         type: 'error',
-                        title: 'Title text',
-                        body: 'Body text',
+                        title: 'Error',
+                        body: response.err.message || 'Error while loading the configuration.',
                         showCloseButton: true
                     });
                 }
             })
-            .catch(function onError(err){
+            .catch(function onError(err) {
                 toaster.pop({
                     type: 'error',
-                    title: 'Title text',
-                    body: 'Body text',
+                    title: 'Error',
+                    body: err.message || 'Error while loading the configuration.',
                     showCloseButton: true
                 });
             })
-            .finally(function eitherWay(){
+            .finally(function eitherWay() {
                 $scope.loadingCfg = false;
             });
     }
@@ -43,8 +43,8 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                 else {
                     toaster.pop({
                         type: 'error',
-                        title: 'Title text',
-                        body: 'Body text',
+                        title: 'Error',
+                        body: response.err.message || 'Error while saving the configuration.',
                         showCloseButton: true
                     });
                 }
@@ -52,12 +52,12 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
             .catch(function onError(err){
                 toaster.pop({
                     type: 'error',
-                    title: 'Title text',
-                    body: 'Body text',
+                    title: 'Error',
+                    body: err.data || 'Error while saving the configuration.',
                     showCloseButton: true
                 });
             })
-            .finally(function eitherWay(){
+            .finally(function eitherWay() {
                 $scope.savingCfg = false;
             });
     }
@@ -73,8 +73,8 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                 else {
                     toaster.pop({
                         type: 'error',
-                        title: 'Title text',
-                        body: 'Body text',
+                        title: 'Error',
+                        body: response.err.message || 'Error while feeding. Please check if the cat is safe.',
                         showCloseButton: true
                     });
                 }
@@ -82,12 +82,12 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
             .catch(function onError(err){
                 toaster.pop({
                     type: 'error',
-                    title: 'Title text',
-                    body: 'Body text',
+                    title: 'Error',
+                    body: err.data || 'Error while feeding. Please check if the cat is safe.',
                     showCloseButton: true
                 });
             })
-            .finally(function eitherWay(){
+            .finally(function eitherWay() {
                 $scope.feeding = false;
             });
     }

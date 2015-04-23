@@ -19,7 +19,7 @@ var config = {
                     callback(null, cfg);
                 }
                 else {
-                    callback(true, null);
+                    callback(new Error('Invalid configuration.'), null);
                 }
             }
         });
@@ -31,7 +31,7 @@ var config = {
             callback();
         }
         else {
-            callback(true);
+            callback(new Error('Invalid configuration.'));
         }
     },
     checkIntegrity: function(cfg) {

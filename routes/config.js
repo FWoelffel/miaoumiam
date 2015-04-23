@@ -6,7 +6,7 @@ var cron = require('../services/cron');
 router.get('/', function(req, res, next) {
     configReader.read(function(err, config) {
         if (err) {
-            res.status(500).send(err);
+            next(err);
         }
         else {
             res.json(config);
@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
     var config = req.body.config;
     configReader.write(config, function(err) {
         if (err) {
-            res.status(500).send(err);
+            next(err);
         }
         else {
             cron.reloadCRONTasks(config);

@@ -92,7 +92,8 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
             });
     }
 
-    $scope.normalizeTime = function() {
+    $scope.updateTime = function() {
+        if($scope.time == undefined) $scope.time = new Date();
         $scope.date.hours = ($scope.time.getHours() < 10 ? '0' + $scope.time.getHours() : $scope.time.getHours());
         $scope.date.minutes = ($scope.time.getMinutes() < 10 ? '0' + $scope.time.getMinutes() : $scope.time.getMinutes());
     }

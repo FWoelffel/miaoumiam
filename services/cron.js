@@ -15,7 +15,8 @@ var cron = {
         if(date.wednesday) cron += '3,';
         if(date.thursday) cron += '4,';
         if(date.friday) cron += '5,';
-        if(date.satursday) cron += '6';
+        if(date.satursday) cron += '6,';
+        if(cron.charAt(cron.length-1) === ',') cron = cron.substring(0, cron.length - 1);
         console.log(cron);
         return cron;
     },

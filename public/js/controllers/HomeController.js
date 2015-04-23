@@ -128,6 +128,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
             tuesday: false,
             wednesday: false,
             thursday: false,
+            friday: false,
             satursday: false,
             sunday: false
         };

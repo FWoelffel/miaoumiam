@@ -6,6 +6,7 @@
     <link rel='stylesheet' href='/stylesheets/font-awesome.min.css'/>
     <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'/>
     <link rel='stylesheet' href='/stylesheets/slider.css'/>
+    <link rel='stylesheet' href='/stylesheets/angulartoastr.min.css'/>
 </head>
 <body ng-controller='HomeController'>
 <div class="container text-center">
@@ -91,9 +92,13 @@
         </div>
     </div>
 </div>
+<toaster-container></toaster-container>
+
 
 <script src='/js/angular.js'></script>
 <script src='/js/angularui.min.js'></script>
+<script src='/js/angular-animate.min.js'></script>
+<script src='/js/angulartoastr.min.js'></script>
 <script src='/js/slider.js'></script>
 <script src='/js/app.js'></script>
 <script src='/js/controllers/HomeController.js'></script>

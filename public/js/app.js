@@ -1,1 +1,1 @@
-var MiaouMiam = angular.module('MiaouMiam', ['ovts', 'ui.bootstrap']);
+var MiaouMiam = angular.module('MiaouMiam', ['ovts', 'ui.bootstrap', 'toaster']);

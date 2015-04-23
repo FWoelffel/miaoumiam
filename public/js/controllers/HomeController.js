@@ -1,4 +1,4 @@
-var HomeController = MiaouMiam.controller('HomeController', function($scope, $http) {
+var HomeController = MiaouMiam.controller('HomeController', function($scope, $http, toaster) {
 
     /**
      * Functions
@@ -8,15 +8,25 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
         $scope.loadingCfg = true;
         $http.get('/config')
             .then(function onSuccess(response) {
-                if(response.status === 200) {
+                if(response && response.status === 200) {
                     $scope.config = response.data;
                 }
                 else {
-                    console.log('Error : ' + response.data);
+                    toaster.pop({
+                        type: 'error',
+                        title: 'Title text',
+                        body: 'Body text',
+                        showCloseButton: true
+                    });
                 }
             })
             .catch(function onError(err){
-                console.log('Error : ' + response.data);
+                toaster.pop({
+                    type: 'error',
+                    title: 'Title text',
+                    body: 'Body text',
+                    showCloseButton: true
+                });
             })
             .finally(function eitherWay(){
                 $scope.loadingCfg = false;
@@ -27,15 +37,25 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
         $scope.savingCfg = true;
         $http.post('/config', {config: cfg})
             .then(function onSuccess(response) {
-                if(response.status === 200) {
+                if(response && response.status === 200) {
                     $scope.config = cfg;
                 }
                 else {
-                    console.log('Error : ' + response.data);
+                    toaster.pop({
+                        type: 'error',
+                        title: 'Title text',
+                        body: 'Body text',
+                        showCloseButton: true
+                    });
                 }
             })
             .catch(function onError(err){
-                console.log('Error : ' + response.data);
+                toaster.pop({
+                    type: 'error',
+                    title: 'Title text',
+                    body: 'Body text',
+                    showCloseButton: true
+                });
             })
             .finally(function eitherWay(){
                 $scope.savingCfg = false;
@@ -47,15 +67,25 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
         $scope.feeding = true;
         $http.post('/feed', {times: $scope.config.quantity})
             .then(function onSuccess(response){
-                if(response.status === 200) {
+                if(response && response.status === 200) {
                     console.log('Feeding terminated');
                 }
                 else {
-                    console.log('Error : ' + response.data);
+                    toaster.pop({
+                        type: 'error',
+                        title: 'Title text',
+                        body: 'Body text',
+                        showCloseButton: true
+                    });
                 }
             })
             .catch(function onError(err){
-                console.log('Error : ' + response.data);
+                toaster.pop({
+                    type: 'error',
+                    title: 'Title text',
+                    body: 'Body text',
+                    showCloseButton: true
+                });
             })
             .finally(function eitherWay(){
                 $scope.feeding = false;

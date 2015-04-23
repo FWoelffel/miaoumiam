@@ -65,7 +65,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
     $scope.feed = function() {
         console.log('Feeding in progress');
         $scope.feeding = true;
-        $http.post('/feed', {times: $scope.config.quantity})
+        $http.post('/feed', {times: $scope.sliderValue})
             .then(function onSuccess(response){
                 if(response && response.status === 200) {
                     console.log('Feeding terminated');

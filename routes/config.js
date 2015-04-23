@@ -4,16 +4,26 @@ var configReader = require('../services/config');
 var cron = require('../services/cron');
 
 router.get('/', function(req, res, next) {
-    configReader.read(function(config) {
-        res.json(config);
+    configReader.read(function(err, config) {
+        if (err) {
+            res.status(500).send(err);
+        }
+        else {
+            res.json(config);
+        }
     });
 });
 
 router.post('/', function(req, res, next) {
     var config = req.body.config;
-    configReader.write(config, function() {
-        cron.reloadCRONTasks(config);
-        res.sendStatus(200);
+    configReader.write(config, function(err) {
+        if (err) {
+            res.status(500).send(err);
+        }
+        else {
+            cron.reloadCRONTasks(config);
+            res.sendStatus(200);
+        }
     })
 });
 

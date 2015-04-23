@@ -36,8 +36,13 @@ server.on('listening', onListening);
  * Globalize CRON tasks
  */
 global.CRON = [];
-config.read(function(cfg) {
-    cron.reloadCRONTasks(cfg);
+config.read(function(err, cfg) {
+    if(err) {
+        // TODO Handle err
+    }
+    else {
+        cron.reloadCRONTasks(cfg);
+    }
 })
 
 /**

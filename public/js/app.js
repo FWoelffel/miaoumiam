@@ -1,1 +1,4 @@
-var MiaouMiam = angular.module('MiaouMiam', ['ovts', 'ui.bootstrap', 'toaster']);
+var MiaouMiam = angular.module('MiaouMiam', ['ovts', 'ui.bootstrap', 'toaster'])
+    .config(['$animateProvider', function($animateProvider){
+        $animateProvider.classNameFilter(/^((?!(fa|btn)).)*$/);
+    }]);

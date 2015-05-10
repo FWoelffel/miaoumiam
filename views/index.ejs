@@ -3,9 +3,9 @@
 <head>
     <title>MiaouMiam</title>
     <link rel='stylesheet' href='/stylesheets/style.css'/>
+    <link rel='stylesheet' href='/stylesheets/slider.css'/>
     <link rel='stylesheet' href='/stylesheets/font-awesome.min.css'/>
     <link rel='stylesheet' href='/stylesheets/bootstrap.min.css'/>
-    <link rel='stylesheet' href='/stylesheets/slider.css'/>
     <link rel='stylesheet' href='/stylesheets/angulartoastr.min.css'/>
 </head>
 <body ng-controller='HomeController'>
@@ -21,7 +21,8 @@
             <span ng-show='feeding'><i class='fa fa-cog fa-spin fa-4x'></i></span>
         </div>
         <div class="col-sm-12 col-md-offset-3 col-md-6">
-            <div ng-disabled='feeding' ovts-slider='' model='sliderValue' ovts-slider-options='{label: "Quantity", min: 1, max: 20, step: 1}'></div>
+            <slider ng-model="sliderValue" floor="1" ceiling="10" step="1">
+            </slider>
         </div>
     </div>
     <hr />
@@ -96,10 +97,11 @@
 
 
 <script src='/js/angular.js'></script>
+<script src='/js/angular-touch.min.js'></script>
 <script src='/js/angularui.min.js'></script>
 <script src='/js/angular-animate.min.js'></script>
 <script src='/js/angulartoastr.min.js'></script>
-<script src='/js/slider.js'></script>
+<script src='/js/angular-slider.min.js'></script>
 <script src='/js/app.js'></script>
 <script src='/js/controllers/HomeController.js'></script>
 

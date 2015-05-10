@@ -118,7 +118,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
         $scope.feeding = false;
         $scope.loadingCfg = false;
         $scope.savingCfg = false;
-        $scope.sliderValue = 10;
+        $scope.sliderValue = 1;
 
         // Init default date
         $scope.time = new Date();

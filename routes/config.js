@@ -3,7 +3,10 @@ var router = express.Router();
 var configReader = require('../services/config');
 var cron = require('../services/cron');
 
-router.get('/', function(req, res, next) {
+/**
+ * GET /config
+ */
+router.get('/config', function(req, res, next) {
     configReader.read(function(err, config) {
         if (err) {
             next(err);
@@ -14,7 +17,11 @@ router.get('/', function(req, res, next) {
     });
 });
 
-router.post('/', function(req, res, next) {
+/**
+ * POST /config
+ * @param config
+ */
+router.post('/config', function(req, res, next) {
     var config = req.body.config;
     configReader.write(config, function(err) {
         if (err) {

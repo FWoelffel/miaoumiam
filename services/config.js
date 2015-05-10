@@ -1,10 +1,22 @@
 var fs = require('fs');
 
 var config = {
+
+    /**
+     * Default configuration file's path
+     */
     CONFIG_PATH: '../config.json',
+    /**
+     * Default empty config
+     */
     DEFAULT_CONFIG: {
         scheduled: []
     },
+
+    /**
+     * This function read the configuration file and give the configuration object to the callback
+     * @param callback Function expecting an error or null as first parameter and null or the configuration object as a second parameter
+     */
     read: function(callback) {
         var path = __dirname + '/' + config.CONFIG_PATH;
         fs.exists(path, function (exists) {
@@ -24,6 +36,12 @@ var config = {
             }
         });
     },
+
+    /**
+     * This function writes the given configuration to the server
+     * @param cfg The configuration to be saved
+     * @param callback This function expect one parameter only in case of error
+     */
     write: function(cfg, callback) {
         if (config.checkIntegrity(cfg)) {
             var path = __dirname + '/' + config.CONFIG_PATH;
@@ -34,6 +52,12 @@ var config = {
             callback(new Error('Invalid configuration.'));
         }
     },
+
+    /**
+     * This function check if a given configuration object is valid
+     * @param cfg The configuration object to be tested
+     * @returns {boolean} True if the configuration is valid, false otherwise
+     */
     checkIntegrity: function(cfg) {
         if (cfg.scheduled == undefined) return false;
         for(var idx in cfg.scheduled) {

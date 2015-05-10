@@ -3,8 +3,12 @@ var servo = require('./servo');
 
 var cron = {
 
+    /**
+     * This function parse a date object and return a cron string
+     * @param date {Object} The expected date object shall look like this : { minutes: 1, hours: 1, sunday: true, monday: true, tuesday: true, wednesday: true, thursday: true, friday: true, satursday: true}
+     * @returns {string} The cron string corresponding to the given date object
+     */
     getCRONString: function(date) {
-        //[MINUTE] [HOUR] [DAY OF MONTH] [MONTH OF YEAR] [DAY OF WEEK] [YEAR (optional)]
         var cron = '';
         cron += date.minutes + ' ';
         cron += date.hours + ' ';
@@ -17,10 +21,13 @@ var cron = {
         if(date.friday) cron += '5,';
         if(date.satursday) cron += '6,';
         if(cron.charAt(cron.length-1) === ',') cron = cron.substring(0, cron.length - 1);
-        console.log(cron);
         return cron;
     },
 
+    /**
+     * This function remove all scheduled cron tasks, read the given configuration object and reload all its planned tasks
+     * @param config {Object} The expected  configuration object shall look like this : {scheduled: [quantity: 1, date: {[date]}]}
+     */
     reloadCRONTasks: function(config) {
         for(idx in global.CRON) {
             global.CRON[idx].cancel();

@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var MealController = require('../controllers/meal');
 
+/**
+ * POST /feed
+ * @param times
+ */
 router.post('/feed', function(req, res, next) {
     var times = req.body.times;
     MealController.feed(times)

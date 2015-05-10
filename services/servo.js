@@ -3,9 +3,26 @@ var async = require("async");
 
 var servo = {
 
+    /**
+     * Default waiting time
+     * You shall adjust it depending on your servomotor model
+     */
     WAIT: 800,
+    /**
+     * Default pin
+     * You shall adjust it depending on your setup
+     */
     PIN: 18,
+    /**
+     * Debug mode
+     * If set to true, following code will be verbose
+     */
     DEBUG: true,
+    /**
+     * Servomotor's states enum
+     * Each state is pretty self-explanatory
+     * You shall set the servo's state to RELEASED when you're done with it
+     */
     servoState: {
         LEFT: 0.06,
         CENTER: 0.15,
@@ -13,6 +30,11 @@ var servo = {
         RELEASED: 0
     },
 
+    /**
+     * This function rotates the servomotor from left to right
+     * @param times Number of movement the servomotor will do
+     * @param callback Function called when the servomotor has terminated its rotations
+     */
     rotate: function(times, callback) {
         var n = 0;
         async.whilst(
@@ -39,6 +61,11 @@ var servo = {
         );
     },
 
+    /**
+     * This function is a helper to easily set the servomotor's state
+     * @param state State to which the servomotor should be set
+     * @param callback Function called after the delay defined by the WAIT variable. Since we can't have any feedback on the real state of the servomotor, we assume that it is set to the given state after WAIT ms
+     */
     setState : function(state, callback) {
         piblaster.setPwm(servo.PIN, state);
         setTimeout(function() {

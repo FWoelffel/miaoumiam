@@ -9,8 +9,11 @@ var MealController = require('../controllers/meal');
 router.post('/feed', function(req, res, next) {
     var times = req.body.times;
     MealController.feed(times)
-        .then(function f(bool) {
-            res.sendStatus(bool ? 200 : 500);
+        .catch(function error() {
+            res.sendStatus(500)
+        })
+        .then(function f() {
+            res.sendStatus(200);
         });
 
 });

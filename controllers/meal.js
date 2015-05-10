@@ -10,8 +10,9 @@ module.exports = {
      */
     feed: function(times) {
         var deferred = Q.defer();
-        servo.rotate(times || 10, function(){
-            deferred.resolve();
+        servo.rotate(times, function(err){
+            if(err) deferred.reject();
+            else deferred.resolve();
         });
         return deferred.promise;
     }

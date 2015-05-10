@@ -15,7 +15,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                     toaster.pop({
                         type: 'error',
                         title: 'Error',
-                        body: response.err.message || 'Error while loading the configuration.',
+                        body: 'Error while loading the configuration.',
                         showCloseButton: true
                     });
                 }
@@ -24,7 +24,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                 toaster.pop({
                     type: 'error',
                     title: 'Error',
-                    body: err.message || 'Error while loading the configuration.',
+                    body: 'Error while loading the configuration.',
                     showCloseButton: true
                 });
             })
@@ -44,7 +44,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                     toaster.pop({
                         type: 'error',
                         title: 'Error',
-                        body: response.err.message || 'Error while saving the configuration.',
+                        body: 'Error while saving the configuration.',
                         showCloseButton: true
                     });
                 }
@@ -53,7 +53,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                 toaster.pop({
                     type: 'error',
                     title: 'Error',
-                    body: err.data || 'Error while saving the configuration.',
+                    body: 'Error while saving the configuration.',
                     showCloseButton: true
                 });
             })
@@ -74,7 +74,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                     toaster.pop({
                         type: 'error',
                         title: 'Error',
-                        body: response.err.message || 'Error while feeding. Please check if the cat is safe.',
+                        body: 'Error while feeding. Please check if the cat is safe.',
                         showCloseButton: true
                     });
                 }
@@ -83,7 +83,7 @@ var HomeController = MiaouMiam.controller('HomeController', function($scope, $ht
                 toaster.pop({
                     type: 'error',
                     title: 'Error',
-                    body: err.data || 'Error while feeding. Please check if the cat is safe.',
+                    body: 'Error while feeding. Please check if the cat is safe.',
                     showCloseButton: true
                 });
             })

@@ -55,7 +55,7 @@ var servo = {
             function (err) {
                 servo.setState(servo.servoState.RELEASED, function() {
                     if (servo.DEBUG) console.log("Servo released");
-                    callback(true);
+                    callback(err);
                 });
             }
         );
@@ -67,10 +67,14 @@ var servo = {
      * @param callback Function called after the delay defined by the WAIT variable. Since we can't have any feedback on the real state of the servomotor, we assume that it is set to the given state after WAIT ms
      */
     setState : function(state, callback) {
-        piblaster.setPwm(servo.PIN, state);
-        setTimeout(function() {
-            callback();
-        }, servo.WAIT);
+        piblaster.setPwm(servo.PIN, state, function(err) {
+            if (err) callback(err);
+            else {
+                setTimeout(function () {
+                    callback();
+                }, servo.WAIT);
+            }
+        });
     }
 }
 

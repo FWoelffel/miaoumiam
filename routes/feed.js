@@ -9,7 +9,7 @@ var servo = require('../services/servo');
 router.post('/feed', function(req, res, next) {
     var times = req.body.times;
     servo.rotate(times, function(err){
-        if(err) res.sendStatus(500);
+        if(err) next(err);
         else res.sendStatus(200);
     });
 

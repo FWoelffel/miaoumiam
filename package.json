@@ -4,6 +4,7 @@
   "author": "Frédéric Woelffel <woelffel.f@gmail.com>",
   "scripts": {
     "start": "forever start bin/www",
+    "stop": "forever stop bin/www",
     "preinstall": "wget https://github.com/sarfata/pi-blaster/archive/master.zip && unzip master.zip && rm master.zip",
     "install": "cd pi-blaster-master && ./autogen.sh && ./configure && make && sudo make install && sudo npm install forever -g",
     "postinstall": "rm -rf pi-blaster-master"

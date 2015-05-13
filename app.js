@@ -6,7 +6,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
-var meal = require('./routes/meal');
+var meal = require('./routes/feed');
 var config = require('./routes/config');
 
 var app = express();
@@ -24,6 +24,7 @@ app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting routes
+// app.js
 app.use('/', routes);
 app.use('/', meal);
 app.use('/', config);

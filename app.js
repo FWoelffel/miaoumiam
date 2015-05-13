@@ -5,8 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
-var meal = require('./routes/feed');
+var index = require('./routes/index');
+var feed = require('./routes/feed');
 var config = require('./routes/config');
 
 var app = express();
@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Setting routes
 // app.js
-app.use('/', routes);
-app.use('/', meal);
+app.use('/', index);
+app.use('/', feed);
 app.use('/', config);
 
 // Catching request not corresponding to known routes

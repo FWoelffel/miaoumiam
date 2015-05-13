@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "preinstall": "wget https://github.com/sarfata/pi-blaster/archive/master.zip && unzip master.zip && rm master.zip",
+    "install": "cd pi-blaster-master && ./autogen.sh && ./configure && make && sudo make install",
+    "postinstall": "rm -rf pi-blaster-master"
   },
   "dependencies": {
     "async": "^0.9.0",
@@ -14,7 +17,7 @@
     "express": "~4.12.2",
     "less-middleware": "1.0.x",
     "morgan": "~1.5.1",
-    "pi-blaster.js": "0.0.2",
+    "pi-blaster.js": "git://github.com/FWoelffel/pi-blaster.js.git",
     "serve-favicon": "~2.2.0",
     "q": "^1.2.0",
     "node-schedule": "^0.2.6"
